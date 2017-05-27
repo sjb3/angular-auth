@@ -2,9 +2,9 @@
 
 require('dotenv').load();
 
+const webpack = require('webpack');
 const HTMLPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const webpack = require('webpack');
 
 module.exports = {
   devtool: 'eval',
@@ -26,17 +26,17 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: '/node_modules/',
+        exclude: /node_modules/,
         loader: 'babel-loader'
-    },
-    {
-      test: /\.html$/,
-      loader: 'html-loader'
-    },
-    {
-      test: /\.scss$/,
-      loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
-    }
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader'
+      },
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+      }
     ]
   }
-}
+};
